@@ -1,0 +1,4 @@
+clients:
+  github:
+    url: "https://api-test.github.com"
+

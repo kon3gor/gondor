@@ -1,0 +1,3 @@
+clients:
+  github:
+    url: "https://api-mirror.github.com" # Use mirror for local debugging

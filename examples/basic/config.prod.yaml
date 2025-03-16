@@ -1,0 +1,5 @@
+clients:
+  github:
+    url: "https://api.github.com"
+    metrics:
+      enable: true
