@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/goccy/go-yaml"
 	"github.com/kon3gor/gondor"
 )
 
@@ -27,7 +26,7 @@ func CustomTimeUnmarshaler(t *time.Duration, data []byte) error {
 
 func main() {
 	// Using custom unmarshaller for timout
-	yaml.RegisterCustomUnmarshaler(CustomTimeUnmarshaler)
+	gondor.RegisterCustomUnmarshaler(CustomTimeUnmarshaler)
 
 	err := gondor.Parse(&config, "./config.yaml", "./config.prod.yaml")
 	if err != nil {

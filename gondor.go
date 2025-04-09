@@ -7,7 +7,23 @@ import (
 	"golang.org/x/xerrors"
 )
 
+var (
+	su = new(stringUnmarshaler)
+)
+
+func RegisterCustomUnmarshaler[T any](unmarshaller func(*T, []byte) error) {
+	yaml.RegisterCustomUnmarshaler(unmarshaller)
+}
+
+func RegisterStringHook(hook Hook[string]) {
+	su.hooks = append(su.hooks, hook)
+}
+
 func Parse(into interface{}, base string, layers ...string) error {
+	if len(su.hooks) > 0 {
+		yaml.RegisterCustomUnmarshaler(su.unmarshall)
+	}
+
 	rootNode, err := parse(base)
 	if err != nil {
 		return nil

@@ -1,0 +1,3 @@
+postgres:
+  user: "gondor"
+  password: "env:PG_PASSWORD"
